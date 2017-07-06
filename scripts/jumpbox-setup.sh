@@ -78,6 +78,17 @@ setup_user()
 	
 	chown $HPC_USER:$HPC_GROUP $SHARE_SCRATCH
 }
+install_intelmpi()
+{
+  cd /opt
+  sudo mv intel intel_old
+  sudo curl -L -O http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/11595/l_mpi_2017.3.196.tgz
+  sudo tar zxvf l_mpi_2017.3.196.tgz
+  sudo rm -rf l_mpi_2017.3.196.tgz
+  cd l_mpi_2017.3.196
+  sudo sed -i -e "s/decline/accept/g" silent.cfg
+  sudo ./install.sh --silent silent.cfg
+}
 
 mount_nfs()
 {
@@ -97,7 +108,7 @@ if [ -e "$SETUP_MARKER" ]; then
     echo "We're already configured, exiting..."
     exit 0
 fi
-
+install_intelmpi
 setup_disks
 mount_nfs
 setup_user
