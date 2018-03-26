@@ -90,16 +90,15 @@ setup_user()
 }
 install_intelmpi()
 {
-  cd /opt
-  sudo mv intel intel_old
-  sudo curl -L -O http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
-  sudo tar zxvf l_mpi_p_5.1.3.223.tgz
-  sudo rm -rf l_mpi_p_5.1.3.223.tgz
-  cd l_mpi_p_5.1.3.223
-  sudo sed -i -e "s/decline/accept/g" silent.cfg
-  sudo sed -i -e "s/#ACTIVATION_SERIAL_NUMBER=snpat/ACTIVATION_SERIAL_NUMBER=VTDT-4246MB9S/g" silent.cfg
-  sudo sed -i -e "s/ACTIVATION_TYPE=exist_lic/ACTIVATION_TYPE=serial_number/g" silent.cfg
-  sudo ./install.sh --silent silent.cfg
+  	cd /opt
+ 
+	sudo mv intel intel_old
+	sudo curl -L -O http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/11595/l_mpi_2017.3.196.tgz
+	sudo tar zxvf l_mpi_2017.3.196.tgz
+	sudo rm -rf l_mpi_2017.3.196.tgz
+	cd l_mpi_2017.3.196
+	sudo sed -i -e "s/decline/accept/g" silent.cfg
+	sudo ./install.sh --silent silent.cfg
   
   #sudo cd /etc/security
   #sudo echo '*            hard   memlock           unlimited' >> limits.conf
@@ -130,6 +129,17 @@ mount_nfs()
   
 		
 }
+Set_variables()
+{
+	chmod 777 ~hpcuser/.bashrc
+	echo 'export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}' >> ~hpcuser/.bashrc
+	echo 'export LIBRARY_PATH=/usr/local/lib:/usr/local/cuda/lib64:${LIBRARY_PATH}' >> ~hpcuser/.bashrc
+	echo 'export CPATH=/usr/loca/include]/usr/loca/cuda/include:${CPATH}' >> ~hpcuser/.bashrc
+	echo 'source /opt/intel/impi/2017.3.196/bin64/mpivars.sh' >> ~hpcuser/.bashrc
+	echo 'export PATH=/opt/anaconda3/bin:${PATH}' >> ~hpcuser/.bashrc
+
+
+}
 SETUP_MARKER=/var/tmp/master-setup.marker
 if [ -e "$SETUP_MARKER" ]; then
 	echo "We're already configured, exiting..."
@@ -139,6 +149,7 @@ install_intelmpi
 setup_disks
 mount_nfs
 setup_user
+Set_variables
 # Create marker file so we know we're configured
 touch $SETUP_MARKER
 exit 0
