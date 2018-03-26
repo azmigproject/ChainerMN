@@ -271,13 +271,7 @@ setup_chainermn_gpu_infiniband()
 		install_chainermn
 		alias python=python3
 		
-		chmod 777 ~hpcuser/.bashrc
-		echo 'export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}' >> ~hpcuser/.bashrc
-		echo 'export LIBRARY_PATH=/usr/local/lib:/usr/local/cuda/lib64:${LIBRARY_PATH}' >> ~hpcuser/.bashrc
-		echo 'export CPATH=/usr/loca/include]/usr/loca/cuda/include:${CPATH}' >> ~hpcuser/.bashrc
-		echo 'source /opt/intel/impi/5.1.3.223/bin64/mpivars.sh' >> ~hpcuser/.bashrc
-		echo 'export PATH=/opt/anaconda3/bin:${PATH}' >> ~hpcuser/.bashrc
-
+		
 
 }
 
