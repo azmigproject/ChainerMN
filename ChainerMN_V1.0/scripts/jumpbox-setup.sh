@@ -108,6 +108,7 @@ install_intelmpi()
 
 mount_nfs()
 {
+   mount_disk
 	if is_centos; then
 		log "install NFS CentOS"
 		yum -y install nfs-utils nfs-utils-lib	
@@ -128,6 +129,23 @@ mount_nfs()
 	fi   		
   
 		
+}
+mount_disk()
+{
+	fdisk /dev/sdc <<EOF
+
+	n
+	p
+	1
+	2048
+	2145386495
+	w
+	EOF
+	sleep 10
+	mkfs.ext4 /dev/sdc1
+	mount -t ext4 /dev/sdc1 /share/home
+	sleep 10
+	echo "/dev/sdc1    /share/home    ext4 defaults    0    1" >> /etc/fstab
 }
 Set_variables()
 {
