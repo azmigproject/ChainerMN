@@ -140,7 +140,7 @@ mount_disk()
 	2048
 	2145386495
 	w
-	EOF
+EOF
 	sleep 10
 	mkfs.ext4 /dev/sdc1
 	mount -t ext4 /dev/sdc1 /share/home
