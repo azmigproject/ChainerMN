@@ -136,9 +136,10 @@ mount_disk()
 
 	n
 	p
+	
 	1
-	2048
-	2145386495
+	
+	
 	w
 EOF
 	sleep 10
