@@ -123,6 +123,7 @@ mount_nfs()
 		sudo apt-get update
 		sudo apt-get -y install nfs-kernel-server		
 		echo "$SHARE_HOME    *(rw,async)" >> /etc/exports
+		echo "$NFS_MOUNT    *(rw,async)" >> /etc/exports
 		exportfs -a		
 			sudo systemctl enable nfs-kernel-server.service
 		sudo systemctl start nfs-kernel-server.service
