@@ -115,6 +115,7 @@ mount_nfs()
 		log "mounting NFS on " ${MASTER_NAME}
 		showmount -e ${MASTER_NAME}
 		mount -t nfs ${MASTER_NAME}:${NFS_ON_MASTER} ${NFS_MOUNT}
+		mount -t nfs ${MASTER_NAME}:${NFS_MOUNT} ${NFS_MOUNT}
 		
 		echo "${MASTER_NAME}:${NFS_ON_MASTER} ${NFS_MOUNT} nfs defaults,nofail  0 0" >> /etc/fstab
 	fi
