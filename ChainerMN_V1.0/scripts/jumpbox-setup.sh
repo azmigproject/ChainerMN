@@ -92,13 +92,15 @@ install_intelmpi()
 {
   	cd /opt
  
-	sudo mv intel intel_old
-	sudo curl -L -O http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/11595/l_mpi_2017.3.196.tgz
-	sudo tar zxvf l_mpi_2017.3.196.tgz
-	sudo rm -rf l_mpi_2017.3.196.tgz
-	cd l_mpi_2017.3.196
-	sudo sed -i -e "s/decline/accept/g" silent.cfg
-	sudo ./install.sh --silent silent.cfg
+	  sudo mv intel intel_old
+	  sudo curl -L -O http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
+	  sudo tar zxvf l_mpi_p_5.1.3.223.tgz
+	  sudo rm -rf l_mpi_p_5.1.3.223.tgz
+	  cd l_mpi_p_5.1.3.223
+	  sudo sed -i -e "s/decline/accept/g" silent.cfg
+	  #sudo sed -i -e "s/#ACTIVATION_SERIAL_NUMBER=snpat/ACTIVATION_SERIAL_NUMBER=VTDT-4246MB9S/g" silent.cfg
+	  #sudo sed -i -e "s/ACTIVATION_TYPE=exist_lic/ACTIVATION_TYPE=serial_number/g" silent.cfg
+	  sudo ./install.sh --silent silent.cfg
   
   #sudo cd /etc/security
   #sudo echo '*            hard   memlock           unlimited' >> limits.conf
