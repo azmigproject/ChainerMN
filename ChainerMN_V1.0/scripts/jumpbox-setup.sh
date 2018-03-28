@@ -23,7 +23,7 @@ done
 SHARE_HOME=/share/home
 SHARE_SCRATCH=/share/scratch
 SHARE_APPS=/share/apps
-
+NFS_MOUNT=/data
 # User
 HPC_USER=hpcuser
 HPC_UID=7007
@@ -146,7 +146,7 @@ EOF
 	mkfs.ext4 /dev/sdc1
 	mount -t ext4 /dev/sdc1 /share/home
 	sleep 10
-	echo "/dev/sdc1    /share/home    ext4 defaults    0    1" >> /etc/fstab
+	echo "/dev/sdc1    ${NFS_MOUNT}    ext4 defaults    0    1" >> /etc/fstab
 }
 Set_variables()
 {
