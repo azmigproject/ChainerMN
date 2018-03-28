@@ -143,6 +143,7 @@ mount_disk()
 	w
 EOF
 	sleep 10
+	mkdir  ${NFS_MOUNT}
 	mkfs.ext4 /dev/sdc1
 	mount -t ext4 /dev/sdc1 ${NFS_MOUNT}
 	sleep 10
