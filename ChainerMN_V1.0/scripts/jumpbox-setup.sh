@@ -144,7 +144,7 @@ mount_disk()
 EOF
 	sleep 10
 	mkfs.ext4 /dev/sdc1
-	mount -t ext4 /dev/sdc1 /share/home
+	mount -t ext4 /dev/sdc1 ${NFS_MOUNT}
 	sleep 10
 	echo "/dev/sdc1    ${NFS_MOUNT}    ext4 defaults    0    1" >> /etc/fstab
 }
