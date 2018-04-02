@@ -358,4 +358,4 @@ else
 	fi
 fi
 
-shutdown -r +1
+#shutdown -r +1
