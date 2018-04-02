@@ -24,6 +24,7 @@ SHARE_HOME=/share/home
 SHARE_SCRATCH=/share/scratch
 SHARE_APPS=/share/apps
 NFS_MOUNT=/data
+DISK_MOUNT=/data1
 # User
 HPC_USER=hpcuser
 HPC_UID=7007
@@ -144,11 +145,11 @@ mount_disk()
 	w
 EOF
 	sleep 10
-	mkdir  ${NFS_MOUNT}
+	mkdir  ${DISK_MOUNT}
 	mkfs.ext4 /dev/sdc1
-	mount -t ext4 /dev/sdc1 ${NFS_MOUNT}
+	mount -t ext4 /dev/sdc1 ${DISK_MOUNT}
 	sleep 10
-	echo "/dev/sdc1    ${NFS_MOUNT}    ext4 defaults    0    1" >> /etc/fstab
+	echo "/dev/sdc1    ${DISK_MOUNT}    ext4 defaults    0    1" >> /etc/fstab
 }
 Set_variables()
 {
